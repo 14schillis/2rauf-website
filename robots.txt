@@ -1,0 +1,6 @@
+# robots.txt for 2rauf.de
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.2rauf.de/sitemap.xml
