@@ -404,3 +404,103 @@ blockquote{
   margin-top: 0.3rem;
   font-style: italic;
 }
+
+/* =======================================================
+   HERO Overlay Optimierung – 2rauf acoustic (empfohlen)
+   Professionelles Layout mit Text-Schatten + Gradient-Overlay
+   ======================================================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.10) 0%,
+    rgba(0, 0, 0, 0.18) 35%,
+    rgba(0, 0, 0, 0.46) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1,
+.hero-content .subheadline {
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.55);
+}
+
+/* Buttons etwas angehoben, besser lesbar auf dunklen Hintergründen */
+.hero .cta,
+.hero .btn-primary,
+.hero .btn-secondary {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Auf kleinen Bildschirmen Overlay leicht verstärken */
+@media (max-width: 480px) {
+  .hero::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.24) 35%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+  }
+  .hero-content h1 {
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+  }
+}
+/* ==== Adaptives Overlay für den Hero ====
+   Standardwerte (werden per JS je Slide angepasst) */
+.hero {
+  --ov-top: 0.10;
+  --ov-mid: 0.18;
+  --ov-bot: 0.46;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,var(--ov-top)) 0%,
+    rgba(0,0,0,var(--ov-mid)) 35%,
+    rgba(0,0,0,var(--ov-bot)) 100%
+  );
+  z-index:1;
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero-content h1,
+.hero-content .subheadline{
+  text-shadow:0 3px 10px rgba(0,0,0,.55);
+}
+
+/* auf sehr kleinen Screens etwas kräftiger */
+@media (max-width:480px){
+  .hero {
+    --ov-top: 0.15;
+    --ov-mid: 0.24;
+    --ov-bot: 0.55;
+  }
+}
+/* Fix: feste Overlay-DIV neutralisieren, wir steuern das Overlay adaptiv via ::after */
+.hero-overlay { background: none !important; }
+
