@@ -3,7 +3,7 @@
 // Inhalte:
 // 1) Hero-Slideshow mit adaptivem Overlay
 // 2) Smooth Scrolling für Menü-Links
-// 3) Mobiles Menü nach Klick schließen
+// 3) Mobiles Menü (Burger) ein/aus + nach Klick schließen
 // 4) Back-to-top Button
 // 5) Einfache Lightbox für Galerie
 // 6) Videos: nie zwei gleichzeitig abspielen
@@ -16,12 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   const slides = document.querySelectorAll(".hero .slide");
   let slideIdx = 0;
-  let slideTimer = null;
 
   function measureBrightnessFromURL(url, onResult) {
     if (!url || typeof onResult !== "function") return;
     const img = new Image();
-    // Bilder liegen lokal → kein CORS-Problem; crossOrigin schadet aber nicht
     img.crossOrigin = "anonymous";
     img.onload = () => {
       try {
@@ -34,13 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let sum = 0, count = 0;
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i], g = data[i + 1], b = data[i + 2];
-          // Wahrnehmungs-gewichtete Luminanz
           const y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
           sum += y; count++;
         }
-        onResult(sum / count); // 0..255
+        onResult(sum / count);
       } catch (e) {
-        onResult(170); // konservativer Mittelwert
+        onResult(170);
       }
     };
     img.onerror = () => onResult(170);
@@ -56,20 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const active = getActiveSlide();
     if (!active) return;
 
-    // Hintergrundbild-URL aus CSS holen
     const bg = getComputedStyle(active).backgroundImage;
     const m = bg && bg.match(/url\((['"]?)(.*?)\1\)/);
     const url = m && m[2];
     if (!url) return;
 
     measureBrightnessFromURL(url, (bright) => {
-      // Schwellen fein: <120 dunkel, 120–170 mittel, >170 hell
       let top, mid, bot;
-      if (bright < 120) {         // dunkel → Overlay leichter
+      if (bright < 120) {
         top = 0.06; mid = 0.12; bot = 0.32;
-      } else if (bright < 170) {  // mittel
+      } else if (bright < 170) {
         top = 0.10; mid = 0.18; bot = 0.46;
-      } else {                    // hell → Overlay stärker
+      } else {
         top = 0.15; mid = 0.24; bot = 0.60;
       }
       hero.style.setProperty("--ov-top", String(top));
@@ -90,10 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
     showSlide(slideIdx);
   }
 
-  // Slideshow starten (nur wenn Slides vorhanden)
   if (slides.length) {
     showSlide(0);
-    slideTimer = setInterval(nextSlide, 5000);
+    setInterval(nextSlide, 5000);
     window.addEventListener("resize", () => {
       clearTimeout(window.__heroResizeTimer);
       window.__heroResizeTimer = setTimeout(updateOverlayForActiveSlide, 150);
@@ -115,10 +109,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ==============================
-  // 3) MOBIL-MENÜ NACH KLICK SCHLIESSEN (falls .nav existiert)
+  // 3) MOBIL-MENÜ (BURGER)
   // ==============================
   const nav = document.querySelector(".nav");
-  if (nav) {
+  const menuToggle = document.getElementById("menu-toggle");
+  if (menuToggle && nav) {
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("show");
+    });
+
     nav.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         nav.classList.remove("show");
@@ -144,34 +143,57 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==============================
-  // 5) EINFACHE LIGHTBOX FÜR GALERIE (optional)
-  //    Erwartet .gallery img (oder data-full)
+  // 5) EINFACHE LIGHTBOX FÜR GALERIE
   // ==============================
   const galleryImages = document.querySelectorAll(".gallery img");
   if (galleryImages.length) {
-    let lb, lbImg, lbPrev, lbNext, lbClose, current = 0;
+    let lb = document.getElementById("lightbox");
+    let lbImg = lb ? lb.querySelector("img") : null;
+    let lbPrev = lb ? lb.querySelector(".lb-prev") : null;
+    let lbNext = lb ? lb.querySelector(".lb-next") : null;
+    let lbClose = lb ? lb.querySelector(".lb-close") : null;
+    let current = 0;
 
-    function buildLightbox() {
-      lb = document.createElement("div");
-      lb.className = "lightbox-overlay";
-      lb.innerHTML = `
-        <button class="lb-close" aria-label="Schließen">×</button>
-        <button class="lb-prev" aria-label="Zurück">‹</button>
-        <img class="lb-img" alt="">
-        <button class="lb-next" aria-label="Weiter">›</button>
-      `;
-      document.body.appendChild(lb);
-      lbImg = lb.querySelector(".lb-img");
-      lbPrev = lb.querySelector(".lb-prev");
-      lbNext = lb.querySelector(".lb-next");
-      lbClose = lb.querySelector(".lb-close");
+    function openLB(i) {
+      if (!lb || !lbImg) return;
+      current = i;
+      const img = galleryImages[current];
+      const full = img.dataset.full || img.src;
+      lbImg.src = full;
+      lb.classList.add("show");
+      lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLB() {
+      if (!lb) return;
+      lb.classList.remove("show");
+      lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    function prevLB() {
+      current = (current - 1 + galleryImages.length) % galleryImages.length;
+      const img = galleryImages[current];
+      lbImg.src = img.dataset.full || img.src;
+    }
+    function nextLB() {
+      current = (current + 1) % galleryImages.length;
+      const img = galleryImages[current];
+      lbImg.src = img.dataset.full || img.src;
+    }
 
+    galleryImages.forEach((img, i) => {
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", () => openLB(i));
+    });
+
+    if (lb && lbClose && lbPrev && lbNext) {
       lb.addEventListener("click", (e) => {
         if (e.target === lb) closeLB();
       });
       lbClose.addEventListener("click", closeLB);
       lbPrev.addEventListener("click", prevLB);
       lbNext.addEventListener("click", nextLB);
+
       document.addEventListener("keydown", (e) => {
         if (!lb.classList.contains("show")) return;
         if (e.key === "Escape") closeLB();
@@ -179,51 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "ArrowRight") nextLB();
       });
     }
-
-    function openLB(i) {
-      if (!lb) buildLightbox();
-      current = i;
-      const img = galleryImages[current];
-      const full = img.dataset.full || img.src;
-      lbImg.src = full;
-      lb.classList.add("show");
-      document.body.style.overflow = "hidden";
-    }
-    function closeLB() {
-      lb.classList.remove("show");
-      document.body.style.overflow = "";
-    }
-    function prevLB() {
-      current = (current - 1 + galleryImages.length) % galleryImages.length;
-      lbImg.src = galleryImages[current].dataset.full || galleryImages[current].src;
-    }
-    function nextLB() {
-      current = (current + 1) % galleryImages.length;
-      lbImg.src = galleryImages[current].dataset.full || galleryImages[current].src;
-    }
-
-    galleryImages.forEach((img, i) => {
-      img.style.cursor = "zoom-in";
-      img.addEventListener("click", () => openLB(i));
-    });
   }
 
   // ==============================
   // 6) VIDEOS: NIE ZWEI GLEICHZEITIG
   // ==============================
-  // HTML5 <video>:
   const videos = document.querySelectorAll("video");
-  videos.forEach(v => {
-    v.addEventListener("play", () => {
-      videos.forEach(other => {
-        if (other !== v && !other.paused) other.pause();
-      });
-      // auch YouTube-IFRAMES pausieren
-      pauseAllYouTubeIframes();
-    });
-  });
 
-  // YouTube <iframe> (erfordert enablejsapi=1 in der URL):
   function postToYouTube(iframe, command) {
     try {
       iframe.contentWindow.postMessage(JSON.stringify({
@@ -233,14 +217,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }), "*");
     } catch (e) {}
   }
+
   function pauseAllYouTubeIframes(except = null) {
     document.querySelectorAll('iframe[src*="youtube.com"]').forEach((f) => {
       if (f === except) return;
       postToYouTube(f, "pauseVideo");
     });
   }
+
+  videos.forEach(v => {
+    v.addEventListener("play", () => {
+      videos.forEach(other => {
+        if (other !== v && !other.paused) other.pause();
+      });
+      pauseAllYouTubeIframes();
+    });
+  });
+
   document.querySelectorAll('iframe[src*="youtube.com"]').forEach((f) => {
-    // Stelle sicher: ?enablejsapi=1 ist gesetzt
     try {
       const u = new URL(f.src);
       if (u.searchParams.get("enablejsapi") !== "1") {
@@ -248,35 +242,14 @@ document.addEventListener("DOMContentLoaded", () => {
         f.src = u.toString();
       }
     } catch (e) {}
-    // Wenn ein YouTube-Frame „play“ empfängt, pausiere die anderen
     window.addEventListener("message", (e) => {
       try {
         const data = JSON.parse(e.data);
         if (data && data.event === "infoDelivery" && data.info && data.info.playerState === 1) {
           pauseAllYouTubeIframes(f);
-          // zusätzlich HTML5-Videos pausieren
           videos.forEach(v => { if (!v.paused) v.pause(); });
         }
       } catch (_) {}
     });
   });
-// 🔼 Nach-oben-Button Logik
-const backToTopButton = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-    backToTopButton.style.display = "block";
-  } else {
-    backToTopButton.style.display = "none";
-  }
 });
-
-backToTopButton.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
-
-});
-
