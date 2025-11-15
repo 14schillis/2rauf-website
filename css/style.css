@@ -58,6 +58,9 @@ body{
 
 /* HERO */
 .hero{
+  --ov-top: 0.10;
+  --ov-mid: 0.18;
+  --ov-bot: 0.46;
   position:relative;
   height:65vh;
   overflow:hidden;
@@ -73,7 +76,20 @@ body{
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.45),rgba(0,0,0,.15));
+  background:none !important; /* Overlay wird via ::after gesteuert */
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,var(--ov-top)) 0%,
+    rgba(0,0,0,var(--ov-mid)) 35%,
+    rgba(0,0,0,var(--ov-bot)) 100%
+  );
+  z-index:1;
+  pointer-events:none;
 }
 .hero-content{
   position:relative;
@@ -81,15 +97,16 @@ body{
   color:#fff;
   top:40%;
   padding:0 15px;
+  z-index:2;
 }
 .hero-content h1{
   font-size:2.2rem;
-  text-shadow:0 2px 8px rgba(0,0,0,.3);
+  text-shadow:0 3px 10px rgba(0,0,0,.55);
 }
 .subheadline{
   font-size:1.05rem;
   margin-top:.5rem;
-  text-shadow:0 2px 6px rgba(0,0,0,.3);
+  text-shadow:0 3px 10px rgba(0,0,0,.55);
 }
 
 /* SECTIONS */
@@ -161,6 +178,7 @@ blockquote{
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:14px;
   margin-top:20px;
+  margin-bottom:2.5rem;
 }
 .gallery img{
   width:100%;
@@ -196,11 +214,26 @@ blockquote{
   box-shadow:0 6px 20px rgba(0,0,0,.2);
 }
 .date-card h3{color:var(--accent);}
+.date-card .time{
+  font-size:0.95rem;
+  color:#666;
+  margin-top:0.3rem;
+  font-style:italic;
+}
+.date-card .note{
+  margin-top:0.4rem;
+  font-size:0.95rem;
+  color:#555;
+  font-style:italic;
+}
 .date-card.special{
   background:var(--accent);
   color:#fff;
 }
 .date-card.special h3{color:#fff;}
+.date-card.special .cta{
+  margin-top:10px;
+}
 
 /* CONTACT & FOOTER */
 #contact p{text-align:center;font-size:1.1rem;}
@@ -230,27 +263,7 @@ blockquote{
 }
 .site-footer a:hover{color:#eee;}
 
-/* TO TOP */
-#toTop{
-  display:none;
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  background:var(--accent);
-  color:#fff;
-  border:none;
-  border-radius:50%;
-  width:44px;
-  height:44px;
-  cursor:pointer;
-  box-shadow:0 3px 8px rgba(0,0,0,.3);
-  font-size:18px;
-  transition:background .3s;
-  z-index:90;
-}
-#toTop:hover{background:var(--accent-hover);}
-
-/* LIGHTBOX */
+/* LIGHTBOX (für vorhandenes Markup #lightbox) */
 .lightbox{
   display:none;
   position:fixed;
@@ -284,6 +297,32 @@ blockquote{
 .lb-prev{top:50%;left:16px;transform:translateY(-50%);}
 .lb-next{top:50%;right:16px;transform:translateY(-50%);}
 .lb-nav:hover,.lb-close:hover{background:rgba(255,255,255,.2);}
+
+/* TO TOP */
+#backToTop{
+  display:none;
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  z-index:99;
+  border:none;
+  outline:none;
+  background-color:#f7c59f;
+  color:#333;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:50%;
+  font-size:20px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.3);
+  transition:all 0.3s ease;
+}
+#backToTop.show{
+  display:block;
+}
+#backToTop:hover{
+  background-color:#e9b07d;
+  transform:translateY(-2px);
+}
 
 /* RESPONSIVE NAV */
 @media(max-width:850px){
@@ -320,212 +359,66 @@ blockquote{
   from{opacity:0;transform:translateY(-10px);}
   to{opacity:1;transform:translateY(0);}
 }
-/* ===========================================
-   2rauf acoustic – Version 4.6A.1
-   Compact & Hero Responsive Patch
-   =========================================== */
 
-/* ===== HERO FIX bis 768px ===== */
+/* HERO – mobile Optimierung */
 @media (max-width: 768px) {
   .hero {
-    height: 55vh; /* etwas kompakter, damit Text nicht verdeckt wird */
+    height:55vh;
   }
   .hero-content {
-    top: 35%;
-    padding: 0 10px;
+    top:35%;
+    padding:0 10px;
   }
   .hero-content h1 {
-    font-size: 1.8rem;
-    line-height: 1.2;
+    font-size:1.8rem;
+    line-height:1.2;
   }
   .subheadline {
-    display: block;
-    font-size: 0.95rem;
-    line-height: 1.3;
-    margin-top: 0.5rem;
-    white-space: normal; /* erlaubt Zeilenumbruch */
+    display:block;
+    font-size:0.95rem;
+    line-height:1.3;
+    margin-top:0.5rem;
+    white-space:normal;
   }
 }
-
-/* ===== EXTRA SMALL FIX bis 400px ===== */
 @media (max-width: 400px) {
   .hero {
-    height: 50vh;
+    height:50vh;
   }
   .hero-content h1 {
-    font-size: 1.6rem;
+    font-size:1.6rem;
   }
   .subheadline {
-    font-size: 0.85rem;
+    font-size:0.85rem;
   }
 }
-
-/* ===== ULTRA SMALL OPTIMIERUNG (bis 350px / 320px) ===== */
 @media (max-width: 350px) {
-  /* Überschriften & Texte */
-  .hero-content h1 { font-size: 1.45rem; }
-  .subheadline { font-size: 0.8rem; }
+  .hero-content h1 { font-size:1.45rem; }
+  .subheadline { font-size:0.8rem; }
 
-  /* Menü enger & besser lesbar */
   .nav a {
-    padding: 8px;
-    font-size: 0.9rem;
+    padding:8px;
+    font-size:0.9rem;
   }
   .nav .cta {
-    font-size: 0.9rem;
-    padding: 7px 12px;
+    font-size:0.9rem;
+    padding:7px 12px;
   }
 
-  /* Galerie etwas höher */
   .gallery img {
-    height: 180px;
-  }
-
-  /* Nach-oben Button kompakter */
-  #toTop {
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
+    height:180px;
   }
 }
-
-/* === Abstand zwischen Fotos und Videos angleichen === */
-.gallery {
-  margin-bottom: 2.5rem; /* Abstand nach unten, z. B. 40px */
-}
-
-.video-container {
-  margin-top: 2.5rem; /* Abstand nach oben, z. B. 40px */
-}
-/* Uhrzeit in Terminkarten */
-.date-card .time {
-  font-size: 0.95rem;
-  color: #666;
-  margin-top: 0.3rem;
-  font-style: italic;
-}
-
-/* =======================================================
-   HERO Overlay Optimierung – 2rauf acoustic (empfohlen)
-   Professionelles Layout mit Text-Schatten + Gradient-Overlay
-   ======================================================= */
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.10) 0%,
-    rgba(0, 0, 0, 0.18) 35%,
-    rgba(0, 0, 0, 0.46) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-content h1,
-.hero-content .subheadline {
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.55);
-}
-
-/* Buttons etwas angehoben, besser lesbar auf dunklen Hintergründen */
-.hero .cta,
-.hero .btn-primary,
-.hero .btn-secondary {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-}
-
-/* Auf kleinen Bildschirmen Overlay leicht verstärken */
-@media (max-width: 480px) {
-  .hero::after {
+@media (max-width:480px){
+  .hero::after{
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.15) 0%,
-      rgba(0, 0, 0, 0.24) 35%,
-      rgba(0, 0, 0, 0.55) 100%
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.24) 35%,
+      rgba(0,0,0,0.55) 100%
     );
   }
-  .hero-content h1 {
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+  .hero-content h1{
+    text-shadow:0 3px 10px rgba(0,0,0,0.6);
   }
 }
-/* ==== Adaptives Overlay für den Hero ====
-   Standardwerte (werden per JS je Slide angepasst) */
-.hero {
-  --ov-top: 0.10;
-  --ov-mid: 0.18;
-  --ov-bot: 0.46;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,var(--ov-top)) 0%,
-    rgba(0,0,0,var(--ov-mid)) 35%,
-    rgba(0,0,0,var(--ov-bot)) 100%
-  );
-  z-index:1;
-  pointer-events:none;
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-}
-
-.hero-content h1,
-.hero-content .subheadline{
-  text-shadow:0 3px 10px rgba(0,0,0,.55);
-}
-
-/* 🔼 Nach-oben-Button */
-#backToTop {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 99;
-  border: none;
-  outline: none;
-  background-color: #f7c59f;
-  color: #333;
-  cursor: pointer;
-  padding: 10px 14px;
-  border-radius: 50%;
-  font-size: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-
-#backToTop:hover {
-  background-color: #e9b07d;
-  transform: translateY(-2px);
-}
-
-/* auf sehr kleinen Screens etwas kräftiger */
-@media (max-width:480px){
-  .hero {
-    --ov-top: 0.15;
-    --ov-mid: 0.24;
-    --ov-bot: 0.55;
-  }
-}
-/* Fix: feste Overlay-DIV neutralisieren, wir steuern das Overlay adaptiv via ::after */
-.hero-overlay { background: none !important; }
-
-
