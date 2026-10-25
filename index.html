@@ -7,34 +7,30 @@
 
   <meta name="description" content="2rauf acoustic – Akustikduo aus Mühldorf &amp; Landshut. Gefühlvolle Livemusik für Hochzeit, freie Trauung, Sektempfang, Geburtstag, Firmenfeier und besondere Events.">
   <link rel="canonical" href="https://2rauf.de/">
+  <meta name="theme-color" content="#FDFBFA">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="preload" as="image" href="images/header1.jpg" fetchpriority="high">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" as="image" href="images/hero-1.webp" fetchpriority="high">
 
   <!-- Open Graph -->
   <meta property="og:locale" content="de_DE">
   <meta property="og:site_name" content="2rauf acoustic">
   <meta property="og:title" content="2rauf acoustic – Akustikduo für Hochzeit, Trauung &amp; Feiern">
   <meta property="og:description" content="Gefühlvolle Livemusik für freie Trauung, Sektempfang, Geburtstag und Firmenfeier in Mühldorf, Landshut und Umgebung.">
-  <meta property="og:image" content="https://2rauf.de/images/logo.jpg">
+  <meta property="og:image" content="https://2rauf.de/images/og.jpg">
   <meta property="og:url" content="https://2rauf.de/">
   <meta property="og:type" content="website">
-
-  <!-- Social Preview -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="2rauf acoustic – Livemusik für Hochzeit &amp; Trauung">
   <meta name="twitter:description" content="Akustikduo aus Mühldorf &amp; Landshut – Gitarre, Gesang und Gefühl für Hochzeit, freie Trauung, Sektempfang und besondere Feiern.">
-  <meta name="twitter:image" content="https://2rauf.de/images/logo.jpg">
+  <meta name="twitter:image" content="https://2rauf.de/images/og.jpg">
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Schriften werden lokal geladen (css/fonts-lokal.css, Dateien in fonts/) -->
+  <link rel="stylesheet" href="css/fonts-lokal.css">
 
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Strukturierte Daten: Band / Musikgruppe -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,12 +38,14 @@
     "@id": "https://2rauf.de/#musicgroup",
     "name": "2rauf acoustic",
     "url": "https://2rauf.de/",
-    "image": "https://2rauf.de/images/logo.jpg",
+    "image": "https://2rauf.de/images/og.jpg",
+    "email": "kontakt@2rauf.de",
     "description": "Akustikduo für Hochzeit, freie Trauung, Sektempfang und besondere Feiern in der Region Mühldorf und Landshut.",
-    "foundingLocation": {
-      "@type": "Place",
-      "name": "Mühldorf am Inn, Bayern"
-    },
+    "member": [
+      { "@type": "Person", "name": "Sabine" },
+      { "@type": "Person", "name": "Michael" }
+    ],
+    "foundingLocation": { "@type": "Place", "name": "Mühldorf am Inn, Bayern" },
     "areaServed": [
       { "@type": "City", "name": "Mühldorf am Inn" },
       { "@type": "City", "name": "Landshut" },
@@ -56,335 +54,376 @@
       { "@type": "City", "name": "Wasserburg am Inn" },
       { "@type": "City", "name": "Erding" }
     ],
-    "sameAs": [
-      "https://www.instagram.com/2rauf.acoustic"
-    ]
+    "sameAs": [ "https://www.instagram.com/2rauf.acoustic" ]
   }
   </script>
 </head>
 
 <body>
-<header class="site-header">
-  <div class="brand">
-    <img src="images/logo.jpg" alt="2rauf acoustic Logo" class="logo">
-    <span class="brand-name">2rauf acoustic</span>
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="#top" aria-label="2rauf acoustic, zum Seitenanfang">
+      <b>2rauf</b><span>acoustic duo</span>
+    </a>
+
+    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Menü öffnen" aria-controls="main-nav" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+
+    <nav id="main-nav" class="nav" aria-label="Hauptnavigation">
+      <a href="#bio">Über uns</a>
+      <a href="#musik">Musik</a>
+      <a href="#anlaesse">Anlässe</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#termine">Termine</a>
+      <a href="#kontakt" class="btn">Anfragen</a>
+    </nav>
   </div>
-
-  <button
-    id="menu-toggle"
-    class="menu-toggle"
-    type="button"
-    aria-label="Menü öffnen"
-    aria-controls="main-nav"
-    aria-expanded="false">
-    <i class="fa-solid fa-bars" aria-hidden="true"></i>
-  </button>
-
-  <nav id="main-nav" class="nav" aria-label="Hauptnavigation">
-    <a href="#bio">Über uns</a>
-    <a href="#repertoire">Repertoire &amp; Anlässe</a>
-    <a href="#media">Medien</a>
-    <a href="#dates">Termine</a>
-    <a href="#contact" class="cta">Jetzt anfragen</a>
-  </nav>
 </header>
-
-<section class="hero" aria-labelledby="hero-title">
-  <div class="slides" aria-hidden="true">
-    <div class="slide active" style="background-image:url('images/header1.jpg')"></div>
-    <div class="slide" style="background-image:url('images/header2.jpg')"></div>
-    <div class="slide" style="background-image:url('images/header3.jpg')"></div>
-    <div class="slide" style="background-image:url('images/header4.jpg')"></div>
-  </div>
-
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <h1 id="hero-title">Akustikduo für Hochzeit, Trauung und Sektempfang</h1>
-    <p class="subheadline">
-      Gefühlvolle Livemusik für freie Trauungen, Hochzeiten und besondere Feiern –
-      aus der Region Mühldorf, Landshut und Umgebung
-    </p>
-  </div>
-</section>
 
 <main>
 
-  <section id="bio" class="section card">
-    <h2>Über uns</h2>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Akustikduo · Mühldorf &amp; Landshut</p>
+        <h1 id="hero-title">Livemusik für Hochzeit &amp; <em>freie Trauung</em></h1>
+        <p class="lead">Zwei Stimmen, eine Gitarre und viel Gefühl. Für Trauung, Sektempfang und Feier.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">Anfrage senden</a>
+          <a class="btn btn-ghost" href="#videos">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+            Reinhören
+          </a>
+        </div>
+        <ul class="hero-facts">
+          <li>Gitarre, Gesang &amp; Mundharmonika</li>
+          <li>Standesamt, Kirche oder freie Trauung</li>
+        </ul>
+      </div>
 
-    <p>
-      <strong>2rauf acoustic</strong> – das sind Sabine &amp; Michael.
-      Als Akustikduo mit Gitarre, Gesang und Mundharmonika begleiten wir
-      <strong>Hochzeiten, freie Trauungen, Sektempfänge, Geburtstage und besondere Feiern</strong>
-      im Raum <strong>Mühldorf, Landshut, Dorfen, Altötting und Wasserburg</strong>.
-    </p>
-
-    <p>
-      Auch <strong>Trauerfeiern</strong> gestalten wir mit einfühlsamer Livemusik,
-      die Trost spendet und einen würdevollen Rahmen schafft.
-      Unsere Musik ist persönlich, stilvoll und genau richtig für Momente,
-      die berühren und in Erinnerung bleiben.
-    </p>
-
-    <blockquote>„Zwei Stimmen, eine Gitarre – und jede Menge Gefühl.“</blockquote>
+      <div class="hero-art">
+        <div class="arch" role="img" aria-label="Sabine und Michael von 2rauf acoustic bei einem Auftritt">
+          <div class="slide active"><img src="images/hero-1.webp" alt="" style="object-position:38% 50%" width="1200" height="675"></div>
+          <div class="slide"><img src="images/hero-4.webp" alt="" style="object-position:50% 35%" width="1200" height="900" loading="lazy"></div>
+          <div class="slide"><img src="images/hero-3.webp" alt="" style="object-position:72% 50%" width="1200" height="675" loading="lazy"></div>
+        </div>
+        <a class="next-badge" id="next-badge" href="#termine" hidden>
+          <small>Nächster Auftritt</small>
+          <strong id="next-title"></strong>
+          <span id="next-meta"></span>
+        </a>
+      </div>
+    </div>
   </section>
 
-  <section id="repertoire" class="section card">
-    <h2>Repertoire &amp; Anlässe</h2>
-
-    <p>
-      Unser Repertoire reicht von zeitlosen Klassikern bis zu modernen Lieblingssongs –
-      immer akustisch, stilvoll und mit viel Gefühl.
-      So entsteht die passende musikalische Atmosphäre für Trauung, Empfang und Feier.
-    </p>
-
-    <h3>Wofür ihr uns buchen könnt</h3>
-
-    <ul class="occasions">
-      <li>✅ Hochzeit &amp; Trauung – standesamtlich, kirchlich oder frei</li>
-      <li>✅ Sektempfang &amp; stilvolle Hintergrundmusik</li>
-      <li>✅ Geburtstag &amp; Familienfeier</li>
-      <li>✅ Taufe &amp; besondere Momente im kleinen Rahmen</li>
-      <li>✅ Trauerfeier &amp; würdevoller musikalischer Abschied</li>
-      <li>✅ Firmenfeier &amp; besondere Events</li>
-      <li>✅ Wohnzimmerkonzert, Bar &amp; kleine Bühne</li>
-    </ul>
-
-    <h3>Songbeispiele</h3>
-
-    <ul class="songlist">
-      <li>Adele – Make You Feel My Love</li>
-      <li>Zaz – Je veux</li>
-      <li>Stevie Wonder – Isn't She Lovely</li>
-      <li>Bill Withers – Ain’t No Sunshine</li>
-      <li>Walk the Moon – Shut Up and Dance</li>
-      <li>Jeff Buckley – Hallelujah</li>
-      <li>Chris Stapleton – Tennessee Whiskey</li>
-      <li>John Mayer – Something Like Olivia</li>
-      <li>Amy Winehouse – Valerie</li>
-      <li>Hanson – MMMBop</li>
-    </ul>
-  </section>
-
-  <section id="media" class="section card">
-    <h2>Fotos &amp; Videos</h2>
-
-    <p>
-      Einblicke in unsere Livemusik bei Hochzeiten, Feiern,
-      Musiknächten und Auftritten in der Region.
-    </p>
-
-    <div class="gallery">
-      <img src="images/gallery1.JPG"
-           alt="2rauf acoustic spielen live in Amerang bei Wasserburg"
-           loading="lazy">
-
-      <img src="images/gallery2.jpg"
-           alt="2rauf acoustic spielen auf einer Hochzeit in Landshut"
-           loading="lazy">
-
-      <img src="images/gallery3.jpg"
-           alt="2rauf acoustic spielen bei der Mühldorfer Musiknacht"
-           loading="lazy">
-
-      <img src="images/gallery4.jpg"
-           alt="2rauf acoustic spielen open air auf einem Hoffest in Waldkraiburg"
-           loading="lazy">
-
-      <img src="images/gallery5.jpg"
-           alt="2rauf acoustic spielen Livemusik in einer Bar in Erding"
-           loading="lazy">
-
-      <img src="images/gallery6.jpg"
-           alt="2rauf acoustic spielen bei der Musiknacht in Mühldorf"
-           loading="lazy">
-
-      <img src="images/gallery7.jpg"
-           alt="2rauf acoustic spielen bei der Musiknacht in Mühldorf 2"
-           loading="lazy">
-
-      <img src="images/gallery8.jpg"
-           alt="2rauf acoustic spielen auf einem Weihnachtsmarkt in Taufkirchen Landkreis Erding"
-           loading="lazy">
-
-      <img src="images/gallery9.jpg"
-           alt="2rauf acoustic Bühne in Wasserburg"
-           loading="lazy">
-
-      <img src="images/gallery10.jpg"
-           alt="2rauf acoustic spielen live auf einem Event in Landshut"
-           loading="lazy">
+  <div class="wave" aria-hidden="true">
+    <div class="wave-track">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 30C100 0 200 0 300 30S500 60 600 30 800 0 900 30 1100 60 1200 30"/><path d="M0 30C100 8 200 8 300 30S500 52 600 30 800 8 900 30 1100 52 1200 30"/><path d="M0 30C100 14 200 14 300 30S500 46 600 30 800 14 900 30 1100 46 1200 30"/></svg>
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 30C100 0 200 0 300 30S500 60 600 30 800 0 900 30 1100 60 1200 30"/><path d="M0 30C100 8 200 8 300 30S500 52 600 30 800 8 900 30 1100 52 1200 30"/><path d="M0 30C100 14 200 14 300 30S500 46 600 30 800 14 900 30 1100 46 1200 30"/></svg>
     </div>
-
-    <div class="videos">
-
-  <iframe
-    src="https://www.youtube-nocookie.com/embed/oYUA_Qu56O4?enablejsapi=1&amp;origin=https%3A%2F%2F2rauf.de"
-    title="Shut up and dance live bei der Mühldorfer Musiknacht"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    loading="lazy"
-    referrerpolicy="strict-origin-when-cross-origin">
-  </iframe>
-
-  <iframe
-    src="https://www.youtube-nocookie.com/embed/_uC98Q_COAU?enablejsapi=1&amp;origin=https%3A%2F%2F2rauf.de"
-    title="Tennessee Whiskey live in Mühldorf"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    loading="lazy"
-    referrerpolicy="strict-origin-when-cross-origin">
-  </iframe>
-
- <iframe
-  src="https://www.youtube-nocookie.com/embed/4nt514ifzkE?enablejsapi=1"
-  title="Hallelujah – 2rauf acoustic live in Wasserburg"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="strict-origin-when-cross-origin">
-</iframe>
-
-<iframe
-  src="https://www.youtube-nocookie.com/embed/B9Y4MuqkXcE?enablejsapi=1"
-  title="Born This Way – 2rauf acoustic live in Waldkraiburg"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="strict-origin-when-cross-origin">
-</iframe>
-
-</div>
-  </section>
-
- <section id="dates" class="section card">
-  <h2>Termine &amp; Auftritte</h2>
-
-  <div class="date-cards">
-
-    <div class="date-card">
-      <h3>Nächster öffentlicher Auftritt</h3>
-
-      <p>
-        <strong>21. November 2026 · Christkindlmarkt bei Zweirad Holbl</strong><br>
-        Blainöd bei Taufkirchen (Vils)<br>
-        <span class="time">ab 17 Uhr</span>
-      </p>
-
-      <p class="note">
-        Akustische Livemusik zum Start in die Vorweihnachtszeit –
-        beim Christkindlmarkt von Zweirad Holbl.
-      </p>
-    </div>
-
-    <div class="date-card">
-      <h3>Letzter Auftritt</h3>
-
-      <p>
-        <strong>17. Oktober 2026 · Mühldorfer Musiknacht</strong><br>
-        Bangkok am Inn · Mühldorf am Inn<br>
-        <span class="time">19–23 Uhr</span>
-      </p>
-
-      <p class="note">
-        Vier Sets live im Rahmen der Mühldorfer Musiknacht.
-      </p>
-    </div>
-
-    <div class="date-card special">
-      <h3>🎤 Auch für eure Feier buchbar</h3>
-
-      <p>
-        Hochzeit · Trauung · Sektempfang · Geburtstag · Firmenfeier
-      </p>
-
-      <p class="note">
-        Im Raum Mühldorf, Wasserburg, Erding, Landshut &amp; Umgebung
-      </p>
-
-      <a href="#contact" class="cta">Jetzt Termin anfragen</a>
-    </div>
-
   </div>
-</section>
 
-  <section id="contact" class="section card">
-    <h2>Kontakt</h2>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Hochzeit</span><span>Freie Trauung</span><span>Sektempfang</span><span>Geburtstag</span><span>Taufe</span><span>Firmenfeier</span><span>Trauerfeier</span><span>Wohnzimmerkonzert</span>
+      <span>Hochzeit</span><span>Freie Trauung</span><span>Sektempfang</span><span>Geburtstag</span><span>Taufe</span><span>Firmenfeier</span><span>Trauerfeier</span><span>Wohnzimmerkonzert</span>
+    </div>
+  </div>
 
-    <p>
-      Ihr sucht Livemusik für eure Hochzeit, freie Trauung,
-      euren Sektempfang oder eine besondere Feier in der Region
-      Mühldorf und Landshut?
-      Dann schreibt uns gerne – wir freuen uns auf eure Anfrage.
-    </p>
+  <!-- ÜBER UNS -->
+  <section id="bio" class="band" aria-labelledby="bio-title">
+    <div class="wrap about">
+      <div class="portraits reveal">
+        <figure class="portrait">
+          <img src="images/p03.webp" alt="Sabine singt bei einem Auftritt" width="900" height="675" loading="lazy">
+          <figcaption><b>Sabine</b>Gesang</figcaption>
+        </figure>
+        <figure class="portrait">
+          <img src="images/p05.webp" alt="Michael spielt Gitarre bei einem Auftritt" width="675" height="900" loading="lazy">
+          <figcaption><b>Michael</b>Gitarre &amp; Gesang</figcaption>
+        </figure>
+      </div>
 
-    <p>
-      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-      <a href="mailto:kontakt@2rauf.de">kontakt@2rauf.de</a>
-    </p>
+      <div class="reveal">
+        <p class="eyebrow">Über uns</p>
+        <h2 id="bio-title">Das sind <em>Sabine</em> &amp; <em>Michael</em></h2>
+        <p style="margin-top:1.4rem">
+          Als Akustikduo mit Gitarre, Gesang und Mundharmonika begleiten wir Hochzeiten, freie Trauungen,
+          Sektempfänge, Geburtstage und besondere Feiern im Raum Mühldorf, Landshut, Dorfen, Altötting und Wasserburg.
+        </p>
+        <p>
+          Unsere Musik ist persönlich, stilvoll und genau richtig für Momente, die berühren und in Erinnerung bleiben.
+        </p>
+        <blockquote>„Zwei Stimmen, eine Gitarre – und jede Menge Gefühl."</blockquote>
+        <p class="mention"><b>Trauerfeier?</b> Auch dort gestalten wir den Rahmen mit einfühlsamer Livemusik, die Trost spendet und Würde gibt.</p>
+      </div>
+    </div>
+  </section>
 
-    <p>
-      <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-      <a href="https://www.instagram.com/2rauf.acoustic"
-         target="_blank"
-         rel="noopener noreferrer">
-        @2rauf.acoustic
-      </a>
-    </p>
+  <!-- MUSIK -->
+  <section id="musik" class="band tint" aria-labelledby="musik-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Repertoire</p>
+        <h2 id="musik-title">Von zeitlos bis <em>Lieblingssong</em></h2>
+        <p>Immer akustisch, stilvoll und mit viel Gefühl. Eine Auswahl unserer Lieblinge, sortiert nach dem Moment, in dem sie am besten passen.</p>
+      </div>
+
+      <ul class="chips" id="song-filter" aria-label="Songs filtern">
+        <li><button class="chip" type="button" data-filter="alle" aria-pressed="true">Alle</button></li>
+        <li><button class="chip" type="button" data-filter="trauung" aria-pressed="false">Trauung</button></li>
+        <li><button class="chip" type="button" data-filter="sektempfang" aria-pressed="false">Sektempfang</button></li>
+        <li><button class="chip" type="button" data-filter="feier" aria-pressed="false">Feier</button></li>
+      </ul>
+
+      <ul class="songs" id="songs">
+        <li data-tags="trauung" data-all><span><span class="t">Hallelujah</span><span class="a">Jeff Buckley</span></span><span class="tags"><span class="tag">Trauung</span></span></li>
+        <li data-tags="trauung" data-all><span><span class="t">Make You Feel My Love</span><span class="a">Adele</span></span><span class="tags"><span class="tag">Trauung</span></span></li>
+        <li data-tags="trauung sektempfang" data-all><span><span class="t">Isn't She Lovely</span><span class="a">Stevie Wonder</span></span><span class="tags"><span class="tag">Trauung</span><span class="tag">Sektempfang</span></span></li>
+        <li data-tags="trauung" data-all><span><span class="t">Chasing Cars</span><span class="a">Snow Patrol</span></span><span class="tags"><span class="tag">Trauung</span></span></li>
+        <li data-tags="trauung"><span><span class="t">Dream a Little Dream of Me</span><span class="a">The Mamas &amp; the Papas</span></span><span class="tags"><span class="tag">Trauung</span></span></li>
+        <li data-tags="trauung"><span><span class="t">Both Sides Now</span><span class="a">Joni Mitchell</span></span><span class="tags"><span class="tag">Trauung</span></span></li>
+        <li data-tags="trauung"><span><span class="t">Wildflowers</span><span class="a">Tom Petty</span></span><span class="tags"><span class="tag">Trauung</span></span></li>
+        <li data-tags="sektempfang" data-all><span><span class="t">Je veux</span><span class="a">Zaz</span></span><span class="tags"><span class="tag">Sektempfang</span></span></li>
+        <li data-tags="sektempfang" data-all><span><span class="t">Ain't No Sunshine</span><span class="a">Bill Withers</span></span><span class="tags"><span class="tag">Sektempfang</span></span></li>
+        <li data-tags="sektempfang" data-all><span><span class="t">Fly Me to the Moon</span><span class="a">Frank Sinatra / Stevie Wonder</span></span><span class="tags"><span class="tag">Sektempfang</span></span></li>
+        <li data-tags="sektempfang"><span><span class="t">Don't Know Why</span><span class="a">Norah Jones</span></span><span class="tags"><span class="tag">Sektempfang</span></span></li>
+        <li data-tags="sektempfang"><span><span class="t">Home</span><span class="a">Edward Sharpe &amp; the Magnetic Zeros</span></span><span class="tags"><span class="tag">Sektempfang</span></span></li>
+        <li data-tags="sektempfang" data-all><span><span class="t">Something Like Olivia</span><span class="a">John Mayer</span></span><span class="tags"><span class="tag">Sektempfang</span></span></li>
+        <li data-tags="feier" data-all><span><span class="t">Tennessee Whiskey</span><span class="a">Chris Stapleton</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+        <li data-tags="feier" data-all><span><span class="t">Shut Up and Dance</span><span class="a">Walk the Moon</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+        <li data-tags="feier" data-all><span><span class="t">Valerie</span><span class="a">Amy Winehouse</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+        <li data-tags="feier" data-all><span><span class="t">Mr. Brightside</span><span class="a">The Killers</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+        <li data-tags="feier"><span><span class="t">MMMBop</span><span class="a">Hanson</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+        <li data-tags="feier"><span><span class="t">Superstition</span><span class="a">Stevie Wonder</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+        <li data-tags="feier"><span><span class="t">...Baby One More Time</span><span class="a">Britney Spears</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+        <li data-tags="feier"><span><span class="t">Zombie</span><span class="a">The Cranberries</span></span><span class="tags"><span class="tag">Feier</span></span></li>
+      </ul>
+      <p class="songs-note">Euer Wunschlied fehlt? Sagt uns Bescheid, wir schauen gemeinsam, wie es akustisch klingen kann.</p>
+    </div>
+  </section>
+
+  <!-- ANLÄSSE -->
+  <section id="anlaesse" class="band" aria-labelledby="anlaesse-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Anlässe</p>
+        <h2 id="anlaesse-title">Wofür ihr uns <em>buchen</em> könnt</h2>
+      </div>
+
+      <div class="moments reveal">
+        <figure><img src="images/p14.webp" alt="Gitarre in einer Kirche" width="675" height="900" loading="lazy"><figcaption>Kirche &amp; Trauung</figcaption></figure>
+        <figure><img src="images/p18.webp" alt="Open-Air-Auftritt mit Leuchttafel" width="675" height="900" loading="lazy"><figcaption>Open Air</figcaption></figure>
+        <figure><img src="images/p16.webp" alt="Abendlicher Auftritt mit Lichterkette" width="675" height="900" loading="lazy"><figcaption>Gartenfest am Abend</figcaption></figure>
+      </div>
+
+      <div class="occasions reveal">
+        <article class="occasion"><h3>Hochzeit &amp; Trauung</h3><p>Standesamtlich, kirchlich oder frei, vom Einzug bis zum Auszug.</p></article>
+        <article class="occasion"><h3>Sektempfang</h3><p>Stilvolle Hintergrundmusik, während sich eure Gäste begegnen.</p></article>
+        <article class="occasion"><h3>Geburtstag &amp; Familienfeier</h3><p>Livemusik, die zu euch und euren Gästen passt.</p></article>
+        <article class="occasion"><h3>Taufe</h3><p>Besondere Momente im kleinen Rahmen.</p></article>
+        <article class="occasion"><h3>Firmenfeier &amp; Events</h3><p>Musik für Empfang, Jubiläum oder Sommerfest.</p></article>
+        <article class="occasion"><h3>Wohnzimmer, Bar &amp; kleine Bühne</h3><p>Konzerte in vertrauter Runde.</p></article>
+        <article class="occasion quiet">
+          <h3>Trauerfeier</h3>
+          <p>Ein würdevoller musikalischer Abschied. Wir spielen leise, einfühlsam und so, wie es zu der Person und zur Familie passt.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section id="ablauf" class="band tint" aria-labelledby="ablauf-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Ablauf</p>
+        <h2 id="ablauf-title">So kommt ihr zu <em>euren Songs</em></h2>
+      </div>
+      <ol class="steps reveal">
+        <li><h3>Anfrage</h3><p>Ihr schreibt uns Datum, Ort und Anlass. Wir melden uns bei euch.</p></li>
+        <li><h3>Kennenlernen</h3><p>Wir sprechen über euren Tag, eure Stimmung und eure Wünsche.</p></li>
+        <li><h3>Songauswahl</h3><p>Gemeinsam legen wir die Titel für Einzug, Trauung, Empfang und Feier fest.</p></li>
+        <li><h3>Euer Tag</h3><p>Wir bauen rechtzeitig auf, spielen und machen den Moment zu eurem.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" class="band" aria-labelledby="galerie-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Galerie</p>
+        <h2 id="galerie-title">Einblicke in <em>unsere Auftritte</em></h2>
+        <p>Hochzeiten, Feiern, Musiknächte und Konzerte in der Region.</p>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <button type="button"><img src="images/p10.webp" data-full="images/p10-full.webp" width="900" height="678" loading="lazy" alt="Sabine und Michael live auf der Bühne"></button>
+        <button type="button"><img src="images/p02.webp" data-full="images/p02-full.webp" width="678" height="900" loading="lazy" alt="Sabine singt am Mikrofon"></button>
+        <button type="button"><img src="images/g1.webp" data-full="images/g1-full.webp" width="900" height="675" loading="lazy" alt="Sabine und Michael mit Gitarre"></button>
+        <button type="button"><img src="images/g3.webp" data-full="images/g3-full.webp" width="900" height="674" loading="lazy" alt="Michael spielt Gitarre"></button>
+        <button type="button"><img src="images/p04.webp" data-full="images/p04-full.webp" width="678" height="900" loading="lazy" alt="Michael mit Gitarre im roten Bühnenlicht"></button>
+        <button type="button"><img src="images/g8.webp" data-full="images/g8-full.webp" width="900" height="600" loading="lazy" alt="2rauf acoustic auf dem Weihnachtsmarkt in Taufkirchen"></button>
+        <button type="button"><img src="images/p17.webp" data-full="images/p17-full.webp" width="675" height="900" loading="lazy" alt="Leuchttafel „Today 2rauf acoustic“ auf der Wiese"></button>
+        <button type="button"><img src="images/g2.webp" data-full="images/g2-full.webp" width="900" height="627" loading="lazy" alt="Sabine singt live"></button>
+        <button type="button"><img src="images/p12.webp" data-full="images/p12-full.webp" width="900" height="678" loading="lazy" alt="Sabine und Michael bei einem Auftritt"></button>
+        <button type="button"><img src="images/g9.webp" data-full="images/g9-full.webp" width="900" height="600" loading="lazy" alt="Sabine singt, Michael spielt Gitarre"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos" class="band tint" aria-labelledby="videos-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Reinhören</p>
+        <h2 id="videos-title">Live, <em>wie es klingt</em></h2>
+      </div>
+
+      <div class="videos">
+        <figure class="video" data-yt="oYUA_Qu56O4" data-title="Shut up and dance live bei der Mühldorfer Musiknacht">
+          <div class="video-frame"><img src="images/g3.webp" alt="" width="900" height="674" loading="lazy"><button class="play" type="button" aria-label="Video abspielen: Shut Up and Dance"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></i></button></div>
+          <figcaption><b>Shut Up and Dance</b><span>Mühldorfer Musiknacht</span></figcaption>
+        </figure>
+        <figure class="video" data-yt="_uC98Q_COAU" data-title="Tennessee Whiskey live in Mühldorf">
+          <div class="video-frame"><img src="images/g2.webp" alt="" width="900" height="627" loading="lazy"><button class="play" type="button" aria-label="Video abspielen: Tennessee Whiskey"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></i></button></div>
+          <figcaption><b>Tennessee Whiskey</b><span>Live in Mühldorf</span></figcaption>
+        </figure>
+        <figure class="video" data-yt="4nt514ifzkE" data-title="Hallelujah – 2rauf acoustic live in Wasserburg">
+          <div class="video-frame"><img src="images/g9.webp" alt="" width="900" height="600" loading="lazy"><button class="play" type="button" aria-label="Video abspielen: Hallelujah"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></i></button></div>
+          <figcaption><b>Hallelujah</b><span>Live in Wasserburg</span></figcaption>
+        </figure>
+        <figure class="video" data-yt="B9Y4MuqkXcE" data-title="Born This Way – 2rauf acoustic live in Waldkraiburg">
+          <div class="video-frame"><img src="images/g8.webp" alt="" width="900" height="600" loading="lazy"><button class="play" type="button" aria-label="Video abspielen: Born This Way"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></i></button></div>
+          <figcaption><b>Born This Way</b><span>Live in Waldkraiburg</span></figcaption>
+        </figure>
+      </div>
+      <p class="privacy-note">Die Videos laden erst nach eurem Klick von YouTube (youtube-nocookie.com). Dabei kann eure IP-Adresse an Google übertragen werden. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    </div>
+  </section>
+
+  <!-- TERMINE -->
+  <section id="termine" class="band" aria-labelledby="termine-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Termine</p>
+        <h2 id="termine-title">Wo ihr uns <em>live</em> hören könnt</h2>
+      </div>
+      <div id="events-upcoming" class="events"></div>
+      <div id="events-past-wrap" hidden>
+        <p class="subhead">Zuletzt gespielt</p>
+        <div id="events-past" class="events"></div>
+      </div>
+      <p class="songs-note" style="margin-top:1.8rem">Für eure Feier buchbar: Hochzeit, Trauung, Sektempfang, Geburtstag und Firmenfeier in der Region Mühldorf, Wasserburg, Erding und Landshut. <a href="#kontakt">Jetzt anfragen</a></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="band tint" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Fragen</p>
+        <h2 id="faq-title">Gut zu <em>wissen</em></h2>
+      </div>
+      <div class="faq" id="faq-list">
+        <details><summary>Welche Technik bringt ihr mit?</summary><p>Wir bringen unsere eigene Anlage mit und stimmen sie auf Raum und Gästezahl ab. Meist genügt eine Steckdose in der Nähe.</p></details>
+        <details><summary>Wie lange spielt ihr?</summary><p>Das richtet sich nach eurem Ablauf, von der Trauung bis zu mehreren Sets am Abend. Sagt uns, was ihr euch vorstellt, wir planen es gemeinsam.</p></details>
+        <details><summary>Können wir uns Lieder wünschen?</summary><p>Ja. Schickt uns eure Wünsche für Einzug, Trauung, Empfang oder Feier. Wir sagen euch, wie sie akustisch klingen können.</p></details>
+        <details><summary>Spielt ihr auch standesamtlich und in der Kirche?</summary><p>Ja, bei standesamtlichen, kirchlichen und freien Trauungen.</p></details>
+        <details><summary>In welchem Umkreis spielt ihr?</summary><p>Schwerpunkt sind Mühldorf, Landshut, Dorfen, Altötting, Wasserburg und Erding. Weitere Orte auf Anfrage.</p></details>
+        <details><summary>Was kostet es?</summary><p>Das hängt von Anlass, Dauer und Anfahrt ab. Schreibt uns Datum und Ort, dann bekommt ihr ein Angebot.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="band" aria-labelledby="kontakt-title">
+    <div class="wrap contact">
+      <div class="reveal">
+        <p class="eyebrow">Kontakt</p>
+        <h2 id="kontakt-title">Erzählt uns von <em>eurem Tag</em></h2>
+        <p style="margin-top:1.4rem">Ihr sucht Livemusik für Hochzeit, freie Trauung, Sektempfang oder eine besondere Feier in der Region Mühldorf und Landshut? Wir freuen uns auf eure Anfrage.</p>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+            <a href="mailto:kontakt@2rauf.de" class="mailtext">kontakt@2rauf.de</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor"/></svg>
+            <a href="https://www.instagram.com/2rauf.acoustic" target="_blank" rel="noopener noreferrer">@2rauf.acoustic</a>
+          </li>
+        </ul>
+        <figure class="selfie"><img src="images/p15.webp" alt="Sabine und Michael als Selfie" width="675" height="900" loading="lazy"></figure>
+
+      </div>
+
+      <form class="form reveal" id="request-form" novalidate>
+        <h3>Anfrage vorbereiten</h3>
+        <div class="field-row">
+          <div class="field"><label for="f-name">Euer Name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Anna &amp; Ben"></div>
+          <div class="field">
+            <label for="f-anlass">Anlass</label>
+            <select id="f-anlass" name="anlass">
+              <option>Hochzeit / Trauung</option>
+              <option>Sektempfang</option>
+              <option>Geburtstag / Familienfeier</option>
+              <option>Taufe</option>
+              <option>Firmenfeier / Event</option>
+              <option>Trauerfeier</option>
+              <option>Etwas anderes</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="f-datum">Datum</label><input id="f-datum" name="datum" type="date"></div>
+          <div class="field"><label for="f-ort">Ort</label><input id="f-ort" name="ort" type="text" placeholder="z. B. Landshut"></div>
+        </div>
+        <div class="field"><label for="f-text">Eure Wünsche</label><textarea id="f-text" name="text" placeholder="Wunschlieder, Ablauf, Gästezahl …"></textarea></div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">E-Mail erstellen</button>
+        </div>
+        <p class="hint">Es wird nichts an uns übertragen, bis ihr die E-Mail selbst abschickt.</p>
+
+        <div class="draft" id="draft">
+          <label for="f-draft" style="font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">Euer Text</label>
+          <textarea id="f-draft" readonly></textarea>
+          <div class="form-actions">
+            <a class="btn btn-ghost" id="mail-link" href="mailto:kontakt@2rauf.de">Im Mailprogramm öffnen</a>
+            <button class="btn btn-ghost" id="copy-draft" type="button">Text kopieren</button>
+          </div>
+          <div class="status" id="copy-status" role="status"></div>
+        </div>
+      </form>
+    </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <p>
-    &copy; <span id="currentYear">2026</span>
-    2rauf acoustic · Livemusik für Hochzeit und Feiern aus Mühldorf &amp; Landshut
-  </p>
-
-  <p>
-    <a href="impressum.html">Impressum</a> |
-    <a href="datenschutz.html">Datenschutz</a>
-  </p>
+  <div class="wrap footer-inner">
+    <div>
+      <a class="wordmark" href="#top" aria-label="Zum Seitenanfang"><b>2rauf</b><span>acoustic duo</span></a>
+      <p style="margin-top:.7rem">&copy; <span id="currentYear">2026</span> 2rauf acoustic · Livemusik für Hochzeit und Feiern aus Mühldorf &amp; Landshut</p>
+    </div>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
 </footer>
 
-<div
-  id="lightbox"
-  class="lightbox"
-  role="dialog"
-  aria-modal="true"
-  aria-hidden="true"
-  aria-label="Bildansicht">
-
-  <button
-    class="lb-nav lb-prev"
-    type="button"
-    aria-label="Vorheriges Bild">
-    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-  </button>
-
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Bildansicht">
+  <button class="lb-btn lb-prev" type="button" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
   <img id="lightbox-img" src="" alt="">
-
-  <button
-    class="lb-nav lb-next"
-    type="button"
-    aria-label="Nächstes Bild">
-    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-  </button>
-
-  <button
-    class="lb-close"
-    type="button"
-    aria-label="Bildansicht schließen">
-    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-  </button>
-
+  <button class="lb-btn lb-next" type="button" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+  <button class="lb-btn lb-close" type="button" aria-label="Bildansicht schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="lb-count" id="lb-count" aria-live="polite"></div>
 </div>
 
-<button
-  id="backToTop"
-  type="button"
-  title="Nach oben"
-  aria-label="Nach oben">
-  ▲
+<button id="backToTop" class="to-top" type="button" aria-label="Nach oben">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 14 7-7 7 7"/></svg>
 </button>
 
 <script src="js/app.js"></script>

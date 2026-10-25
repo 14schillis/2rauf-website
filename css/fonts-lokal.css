@@ -1,0 +1,9 @@
+/* Lokale Schriften (kein Kontakt zu Google).
+   Die woff2-Dateien liegen im Ordner fonts/ (siehe fonts/LIES-MICH.txt).
+   Solange sie fehlen, zeigt die Seite Ersatzschriften (Didot/Georgia bzw. Futura/Avenir/System). */
+@font-face{font-family:'Jost';font-weight:300;font-style:normal;font-display:swap;src:url('../fonts/jost-300.woff2') format('woff2')}
+@font-face{font-family:'Jost';font-weight:400;font-style:normal;font-display:swap;src:url('../fonts/jost-400.woff2') format('woff2')}
+@font-face{font-family:'Jost';font-weight:500;font-style:normal;font-display:swap;src:url('../fonts/jost-500.woff2') format('woff2')}
+@font-face{font-family:'Bodoni Moda';font-weight:400;font-style:normal;font-display:swap;src:url('../fonts/bodoni-moda-400.woff2') format('woff2')}
+@font-face{font-family:'Bodoni Moda';font-weight:500;font-style:normal;font-display:swap;src:url('../fonts/bodoni-moda-500.woff2') format('woff2')}
+@font-face{font-family:'Bodoni Moda';font-weight:400;font-style:italic;font-display:swap;src:url('../fonts/bodoni-moda-400-italic.woff2') format('woff2')}

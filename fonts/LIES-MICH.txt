@@ -1,0 +1,11 @@
+Hier gehören die Schriftdateien (woff2) hin, damit die Seite ohne Google-Server auskommt:
+
+  jost-300.woff2, jost-400.woff2, jost-500.woff2
+  bodoni-moda-400.woff2, bodoni-moda-500.woff2, bodoni-moda-400-italic.woff2
+
+So bekommst du sie (beide Schriften stehen unter der SIL Open Font License und dürfen frei genutzt werden):
+  1. Auf https://gwfh.mranftl.com (google-webfonts-helper) die Schrift "Jost" wählen, Zeichensatz "latin",
+     Stärken 300, 400, 500, und die woff2-Dateien herunterladen.
+  2. Dasselbe für "Bodoni Moda" (400, 500, 400 italic).
+  3. Dateien exakt so umbenennen wie oben und in diesen Ordner legen.
+Alternativ liefern fontsource.org (npm-Pakete @fontsource/jost und @fontsource/bodoni-moda) dieselben woff2-Dateien.
